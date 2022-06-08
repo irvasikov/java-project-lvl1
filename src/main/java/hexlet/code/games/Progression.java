@@ -29,9 +29,12 @@ public class Progression {
         String[] chars = progress.split(" ");
         var result = 0;
 
-        for (var ch: chars) {
+        for (var i = 0; i < chars.length; i++) {
+            var ch = chars[i];
             if (ch.equals("..")) {
-                result = Integer.parseInt(ch);
+                var previousNumber = Integer.parseInt(chars[i - 1]);
+                var step =  previousNumber - Integer.parseInt(chars[i - 2]);
+                result = previousNumber + step;
             }
         }
         return result;
