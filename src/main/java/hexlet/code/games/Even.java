@@ -1,6 +1,5 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Even {
@@ -29,16 +28,14 @@ public class Even {
     }*/
 
     public static boolean isEven(int number) {
-        if (number % 2 == 0) {
-            return true;
-        }
-        return false;
+        return number % 2 == 0;
     }
 
     public static String[] getAnswers(String[] numbers) {
-        String[] rightAnswers = new String[3];
+        final var rounds = 3;
+        String[] rightAnswers = new String[rounds];
 
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < rounds; i++) {
             var num = numbers[i];
             var rightAnswer = (isEven(Integer.parseInt(num))) ? "yes" : "no";
             rightAnswers[i] = rightAnswer;
@@ -48,9 +45,12 @@ public class Even {
     }
 
     public static String[] getQuestions() {
-        String[] numbers = new String[3];
-        for (var i = 0; i < 3; i++) {
-            int randomNum = ThreadLocalRandom.current().nextInt(1, 100);
+        final var limitOfRandom = 100;
+        final var rounds = 3;
+        String[] numbers = new String[rounds];
+
+        for (var i = 0; i < rounds; i++) {
+            int randomNum = ThreadLocalRandom.current().nextInt(1, limitOfRandom);
             numbers[i] = Integer.toString(randomNum);
         }
         return numbers;

@@ -4,15 +4,18 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Calculate {
     public static String[] getQuestions() {
+        final var rounds = 3;
+        final var limitOfRandom = 100;
+
         String[] sings = {"+", "-", "*"};
-        String[] questions = new String[3];
+        String[] questions = new String[rounds];
 
-        for (var i = 0; i < 3; i++) {
-            int randomNum1 = ThreadLocalRandom.current().nextInt(1, 100);
-            int randomNum2 = ThreadLocalRandom.current().nextInt(1, 100);
-            int randomSing = ThreadLocalRandom.current().nextInt(0, 3);
+        for (var i = 0; i < rounds; i++) {
+            int randomNum1 = ThreadLocalRandom.current().nextInt(1, limitOfRandom);
+            int randomNum2 = ThreadLocalRandom.current().nextInt(1, limitOfRandom);
+            int randomSing = ThreadLocalRandom.current().nextInt(0, rounds);
 
-            var resultQuestion = Integer.toString(randomNum1) + " " + sings[randomSing] + " " + Integer.toString(randomNum2);
+            var resultQuestion = randomNum1 + " " + sings[randomSing] + " " + randomNum2;
 
             questions[i] = resultQuestion;
         }
@@ -20,10 +23,11 @@ public class Calculate {
     }
 
     public static String[] getAnswers(String[] questions) {
-        String[] answers = new String[3];
+        final var rounds = 3;
+        String[] answers = new String[rounds];
 
 
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < rounds; i++) {
             var elementsOfExpr = questions[i].split(" ");
             var num1 = Integer.parseInt(elementsOfExpr[0]);
             var sing = elementsOfExpr[1];
@@ -47,6 +51,8 @@ public class Calculate {
             case "*":
                 result = Integer.toString(num1 * num2);
                 return result;
+            default:
+                System.out.println("blah blah blah");
         }
 
         return result;

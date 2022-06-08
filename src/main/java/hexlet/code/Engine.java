@@ -55,39 +55,47 @@ public class Engine {
     }*/
 
     public static void gameLogic(int choice, String name) {
-        final var ROUNDS = 3;
-        var questions = new String[3];
-        var answers = new String[3];
+        final var rounds = 3;
+        var questions = new String[rounds];
+        var answers = new String[rounds];
+
+        final var even = 2;
+        final var calc = 3;
+        final var gcd = 4;
+        final var progression = 5;
+        final var prime = 6;
 
         switch (choice) {
-            case 2:
+            case even:
                 System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
                 questions = Even.getQuestions();
                 answers = Even.getAnswers(questions);
                 break;
-            case 3:
+            case calc:
                 System.out.println("What is the result of the expression?");
                 questions = Calculate.getQuestions();
                 answers = Calculate.getAnswers(questions);
                 break;
-            case 4:
+            case gcd:
                 System.out.println("Find the greatest common divisor of given numbers.");
                 questions = GCD.getQuestions();
                 answers = GCD.getAnswers(questions);
                 break;
-            case 5:
+            case progression:
                 System.out.println("What number is missing in the progression?");
                 questions = Progression.getQuestions();
                 answers = Progression.getAnswers(questions);
                 break;
-            case 6:
+            case prime:
                 System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
                 questions = Prime.getQuestions();
                 answers = Prime.getAnswers(questions);
                 break;
+            default:
+                System.out.println("answer");
         }
 
-        for (var i = 0; i < ROUNDS; i++) {
+        for (var i = 0; i < rounds; i++) {
             var q = questions[i];
             var rightAnswer = answers[i];
             System.out.println("Question: " + q);
@@ -127,3 +135,11 @@ public class Engine {
         return name;
     }
 }
+/*
+1 - Greet
+        2 - Even
+        3 - Calc
+        4 - GCD
+        5 - Progression
+        6 - Prime
+        0 - Exit*/
