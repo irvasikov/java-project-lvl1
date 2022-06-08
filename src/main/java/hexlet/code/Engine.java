@@ -100,6 +100,10 @@ public class Engine {
             if (rightAnswer.equals(answer)) {
                 System.out.println("Correct!");
             } else {
+                /*'yes' is wrong answer ;(. Correct answer was 'no'.
+                        Let's try again, Bill!*/
+                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", answer, rightAnswer);
+                System.out.printf("Let's try again, %s!", name);
                 return;
             }
         }
